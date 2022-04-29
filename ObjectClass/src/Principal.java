@@ -1,4 +1,5 @@
-public class Principal{
+
+public class Principal {
 
     public static void main(String[] args){
 
@@ -33,14 +34,54 @@ public class Principal{
         //Quando você imprime o objeto, automaticamente o toString é chamado, observe:
         System.out.println("Esse é o toString() original herdado de Object chamado diretamente: " + pessoa1);
 
-        //Interrompe a thread atual do objeto em questão colocando-a em espera.
-        //pessoa2.wait();
-        //Interrompe a thread atual do objeto em questão colocando-a em espera por um determinado tempo passado como parâmetro.
+        System.out.println();
+        System.out.println(" --- THREADS --- ");
+        System.out.println();
+
+        //Para exemplificar os métodos wait(), notify() e notifyAll() precisamos criar uma Thread
+        //Criando um objeto do tipo Thread
+
+        Thread thread1 = new Thread();
+
+        //Iniciando minha thread1
+        thread1.start();
+
+        //Para trabalhar com threads precisamos do bloco synchronized que possibilita a manipulação das threads
+        synchronized (thread1){
+
+            //Imprimindo e chamando o método isAlive() para verificar se a thread1 está ativa
+            System.out.println("Iniciando Minha Thread...Está ativa? " + thread1.isAlive());
+
+            try {
+                //Interrompe a thread1 atual do objeto em questão colocando-a em espera.
+                thread1.wait();
+                System.out.println("Pausando Minha Thread... Está ativa? " + thread1.isAlive());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+//        thread1.notify();
+//        System.out.println("Retomando Minha Thread... Está ativa? " + thread1.isAlive());
+
+        synchronized (thread1){
+            thread1.notify();
+            System.out.println("Retomando Minha Thread... Está ativa ?" + thread1.isAlive());
+
+        }
+
+
+
+
+
+
+        //Interrompe a thread1 atual do objeto em questão colocando-a em espera por um determinado tempo passado como parâmetro.
         //pessoa3.wait(100);
-        //Interrompe a thread atual do objeto em questão colocando-a em espera por um determinado tempo passados como parâmetros.
+        //Interrompe a thread1 atual do objeto em questão colocando-a em espera por um determinado tempo passados como parâmetros.
         //pessoa3.wait(50, 10);
 
-        //Retoma a execução da thread em questão.
+        //Retoma a execução da thread1 em questão.
         //pessoa2.notify();
         //Retoma a execução de todas as threads.
         //pessoa2.notifyAll();
