@@ -3,13 +3,18 @@ public class Principal {
 
     public static void main(String[] args){
 
+        //Cria a pessoa1
         Pessoa pessoa1 = new Pessoa();
 
+        //Clonando a pessoa1 e guardando na variável pessoa2
         Pessoa pessoa2 = pessoa1.clone();
-        System.out.println("A pessoa 2 é: " + pessoa2);
 
         //Cria uma outra pessoa para poder comparar
         Pessoa pessoa3 = new Pessoa();
+
+        System.out.println();
+        System.out.println(" --- EQUALS --- ");
+        System.out.println();
 
         //Compara se os objetos são iguais.
         boolean eIgual = pessoa2.equals(pessoa3);
@@ -19,13 +24,25 @@ public class Principal {
         //Observe que o resultado será verdadeiro, já que a pessoa 2 é um clone da pessoa 1
         System.out.println("Pessoa 1 e 2 são iguais? " + pessoa1.equals(pessoa2));
 
+        System.out.println();
+        System.out.println(" --- CLASS --- ");
+        System.out.println();
+
         //Retorna a classe e o pacote que originou o objeto.
         Class classe = pessoa1.getClass();
         System.out.println("O nome da classe é: " + classe);
 
+        System.out.println();
+        System.out.println(" --- HASHCODE --- ");
+        System.out.println();
+
         //Retorna um número inteiro que identifica o objeto.
         int hashCode = pessoa1.hashCode();
         System.out.println("O código de dentificação do objeto é: " + hashCode);
+
+        System.out.println();
+        System.out.println(" --- TOSTRING --- ");
+        System.out.println();
 
         //Retorna uma String de representação do objeto.
         String descricaoObjeto = pessoa1.toString();
